@@ -1,0 +1,307 @@
+{
+  "name": "jv-noorm",
+  "version": "0.0.63",
+  "description": "DB access without ORM",
+  "main": "dist/index.js",
+  "author": "Joubert Vasconcelos",
+  "license": "BSD-4-Clause",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "migration": "ts-node-dev ./src/migration/newMigration.ts",
+    "deploy": "ts-node-dev ./src/migration/deploy.ts",
+    "generate": "ts-node-dev ./src/generate/generate.ts"
+  },
+  "keywords": [
+    "mariadb",
+    "MariaDB",
+    "postgres",
+    "Postgres",
+    "postgresql",
+    "PostgreSQL",
+    "mysql",
+    "MySQL",
+    "db",
+    "database",
+    "noorm",
+    "no-orm",
+    "no orm",
+    "no object relational mapping",
+    "orm",
+    "ORM"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./connection": {
+      "import": "./dist/db/connection.js",
+      "require": "./dist/db/connection.js",
+      "types": "./dist/db/connection.d.ts"
+    },
+    "./BaseDB": {
+      "import": "./dist/db/BaseDB.js",
+      "require": "./dist/db/BaseDB.js",
+      "types": "./dist/db/BaseDB.d.ts"
+    },
+    "./ConnectionPool": {
+      "import": "./dist/db/ConnectionPool.js",
+      "require": "./dist/db/ConnectionPool.js",
+      "types": "./dist/db/ConnectionPool.d.ts"
+    },
+    "./MariaDB": {
+      "import": "./dist/db/mariadb/MariaDB.js",
+      "require": "./dist/db/mariadb/MariaDB.js",
+      "types": "./dist/db/mariadb/MariaDB.d.ts"
+    },
+    "./pool": {
+      "import": "./dist/db/mariadb/pool.js",
+      "require": "./dist/db/mariadb/pool.js",
+      "types": "./dist/db/mariadb/pool.d.ts"
+    },
+    "./PostgreSQL": {
+      "import": "./dist/db/postgresql/PostgreSQL.js",
+      "require": "./dist/db/postgresql/PostgreSQL.js",
+      "types": "./dist/db/postgresql/PostgreSQL.d.ts"
+    },
+    "./migration": {
+      "import": "./dist/migration/newMigration.js",
+      "require": "./dist/migration/newMigration.js",
+      "types": "./dist/migration/newMigration.d.ts"
+    },
+    "./deploy": {
+      "import": "./dist/migration/deploy.js",
+      "require": "./dist/migration/deploy.js",
+      "types": "./dist/migration/deploy.d.ts"
+    },
+    "./generate": {
+      "import": "./dist/generate/generate.js",
+      "require": "./dist/generate/generate.js",
+      "types": "./dist/generate/generate.d.ts"
+    },
+    "./BasicCrud": {
+      "import": "./dist/generate/basicCrud/BasicCrud.js",
+      "require": "./dist/generate/basicCrud/BasicCrud.js",
+      "types": "./dist/generate/basicCrud/BasicCrud.d.ts"
+    },
+    "./AlreadyExistsError": {
+      "import": "./dist/shared/errors/already-exists-error.js",
+      "require": "./dist/shared/errors/already-exists-error.js",
+      "types": "./dist/shared/errors/already-exists-error.d.ts"
+    },
+    "./ConnectionError": {
+      "import": "./dist/shared/errors/connection-error.js",
+      "require": "./dist/shared/errors/connection-error.js",
+      "types": "./dist/shared/errors/connection-error.d.ts"
+    },
+    "./DBError": {
+      "import": "./dist/shared/errors/db-error.js",
+      "require": "./dist/shared/errors/db-error.js",
+      "types": "./dist/shared/errors/db-error.d.ts"
+    },
+    "./DBNotConnectedError": {
+      "import": "./dist/shared/errors/db-not-connected-error.js",
+      "require": "./dist/shared/errors/db-not-connected-error.js",
+      "types": "./dist/shared/errors/db-not-connected-error.d.ts"
+    },
+    "./DBSchemaNotDefinedError": {
+      "import": "./dist/shared/errors/db-schema-not-defined-error.js",
+      "require": "./dist/shared/errors/db-schema-not-defined-error.js",
+      "types": "./dist/shared/errors/db-schema-not-defined-error.d.ts"
+    },
+    "./DBMetadataNotLoadedError": {
+      "import": "./dist/shared/errors/db-metadata-not-loaded.js",
+      "require": "./dist/shared/errors/db-metadata-not-loaded.js",
+      "types": "./dist/shared/errors/db-metadata-not-loaded.d.ts"
+    },
+    "./EnvNotDefinedError": {
+      "import": "./dist/shared/errors/env-not-defined-error.js",
+      "require": "./dist/shared/errors/env-not-defined-error.js",
+      "types": "./dist/shared/errors/env-not-defined-error.d.ts"
+    },
+    "./InvalidDBTypeError": {
+      "import": "./dist/shared/errors/invalid-db-type-error.js",
+      "require": "./dist/shared/errors/invalid-db-type-error.js",
+      "types": "./dist/shared/errors/invalid-db-type-error.d.ts"
+    },
+    "./InvalidValueError": {
+      "import": "./dist/shared/errors/invalid-value-error.js",
+      "require": "./dist/shared/errors/invalid-value-error.js",
+      "types": "./dist/shared/errors/invalid-value-error.d.ts"
+    },
+    "./PoolNotInitializedError": {
+      "import": "./dist/shared/errors/pool-not-initialized-error.js",
+      "require": "./dist/shared/errors/pool-not-initialized-error.js",
+      "types": "./dist/shared/errors/pool-not-initialized-error.d.ts"
+    },
+    "./WrongDeleteStatementError": {
+      "import": "./dist/shared/errors/wrong-delete-statement-error.js",
+      "require": "./dist/shared/errors/wrong-delete-statement-error.js",
+      "types": "./dist/shared/errors/wrong-delete-statement-error.d.ts"
+    },
+    "./DBURLError": {
+      "import": "./dist/shared/errors/db-url-error.js",
+      "require": "./dist/shared/errors/db-url-erro.js",
+      "types": "./dist/shared/errors/db-url-error.dts"
+    },
+    "./TableDoesNotExistsError": {
+      "import": "./dist/shared/errors/table-does-not-exists-error.js",
+      "require": "./dist/shared/errors/table-does-not-exists-error.js",
+      "types": "./dist/shared/errors/table-does-not-exists-error.d.ts"
+    },
+    "./InvalidMetadataError": {
+      "import": "./dist/shared/errors/invalid-metadata-error.js",
+      "require": "./dist/shared/errors/invalid-metadata-error.js",
+      "types": "./dist/shared/errors/invalid-metadata-error.d.ts"
+    },
+    "./BadPrimaryKeyFormatError": {
+      "import": "./dist/shared/errors/bad-primary-key-format-error.js",
+      "require": "./dist/shared/errors/bad-primary-key-format-error.js",
+      "types": "./dist/shared/errors/bad-primary-key-format-error.d.ts"
+    },
+    "./ConstraintError": {
+      "import": "./dist/shared/errors/constraint-error.js",
+      "require": "./dist/shared/errors/constraint-error.js",
+      "types": "./dist/shared/errors/constraint-error.d.ts"
+    },
+    "./InvalidDropdownConfigError": {
+      "import": "./dist/shared/errors/invalid-dropdown-config-error.js",
+      "require": "./dist/shared/errors/invalid-dropdown-config-error.js",
+      "types": "./dist/shared/errors/invalid-dropdown-config-error.d.ts"
+    },
+    "./MissingFieldError": {
+      "import": "./dist/shared/errors/missing-field-error.js",
+      "require": "./dist/shared/errors/missing-field-error.js",
+      "types": "./dist/shared/errors/missing-field-error.d.ts"
+    },
+    "./FieldSizeExcedeedError": {
+      "import": "./dist/shared/errors/field-size-excedeed-error.js",
+      "require": "./dist/shared/errors/field-size-excedeed-error.js",
+      "types": "./dist/shared/errors/field-size-excedeed-error.d.ts"
+    },
+    "./ValueDoesNotExistsOnParentError": {
+      "import": "./dist/shared/errors/value-does-not-exists-on-parent-error.js",
+      "require": "./dist/shared/errors/value-does-not-exists-on-parent-error.js",
+      "types": "./dist/shared/errors/value-does-not-exists-on-parent-error.d.ts"
+    },
+    "./ValueAlreadyExistsOnParentError": {
+      "import": "./dist/shared/errors/value-already-exists-on-parent-error.js",
+      "require": "./dist/shared/errors/value-already-exists-on-parent-error.js",
+      "types": "./dist/shared/errors/value-already-exists-on-parent-error.d.ts"
+    },
+    "./DBType": {
+      "import": "./dist/enum/dbType.js",
+      "require": "./dist/enum/dbType.js",
+      "types": "./dist/enum/dbType.d.ts"
+    },
+    "./Operations": {
+      "import": "./dist/enum/operations.js",
+      "require": "./dist/enum/operations.js",
+      "types": "./dist/enum/operations.d.ts"
+    },
+    "./DeleteRule": {
+      "import": "./dist/enum/deleteRule.js",
+      "require": "./dist/enum/deleteRule.js",
+      "types": "./dist/enum/deleteRule.d.ts"
+    },
+    "./ILoggedUser": {
+      "import": "./dist/db/interfaces/ILoggedUser.js",
+      "require": "./dist/db/interfaces/ILoggedUser.js",
+      "types": "./dist/db/interfaces/ILoggedUser.d.ts"
+    },
+    "./ICrudEvent": {
+      "import": "./dist/db/interfaces/ICrudEvent.js",
+      "require": "./dist/db/interfaces/ICrudEvent.js",
+      "types": "./dist/db/interfaces/ICrudEvent.d.ts"
+    },
+    "./IColumnMetaDataResultSet": {
+      "import": "./dist/db/interfaces/IColumnMetaDataResultSet.js",
+      "require": "./dist/db/interfaces/IColumnMetaDataResultSet.js",
+      "types": "./dist/db/interfaces/IColumnMetaDataResultSet.d.ts"
+    },
+    "./IDBDeleteResult": {
+      "import": "./dist/db/interfaces/IDBDeleteResult.js",
+      "require": "./dist/db/interfaces/IDBDeleteResult.js",
+      "types": "./dist/db/interfaces/IDBDeleteResult.d.ts"
+    },
+    "./IDBInsertResult": {
+      "import": "./dist/db/interfaces/IDBInsertResult.js",
+      "require": "./dist/db/interfaces/IDBInsertResult.js",
+      "types": "./dist/db/interfaces/IDBInsertResult.d.ts"
+    },
+    "./IDBUpdateResult": {
+      "import": "./dist/db/interfaces/IDBUpdateResult.js",
+      "require": "./dist/db/interfaces/IDBUpdateResult.js",
+      "types": "./dist/db/interfaces/IDBUpdateResult.d.ts"
+    },
+    "./IDeleteOptions": {
+      "import": "./dist/db/interfaces/IDeleteOptions.js",
+      "require": "./dist/db/interfaces/IDeleteOptions.js",
+      "types": "./dist/db/interfaces/IDeleteOptions.d.ts"
+    },
+    "./ITableConstraintsResultSet": {
+      "import": "./dist/db/interfaces/ITableConstraintsResultSet.js",
+      "require": "./dist/db/interfaces/ITableConstraintsResultSet.js",
+      "types": "./dist/db/interfaces/ITableConstraintsResultSet.d.ts"
+    },
+    "./ISchemaMetaDataResultSet": {
+      "import": "./dist/db/interfaces/ISchemaMetaDataResultSet.js",
+      "require": "./dist/db/interfaces/ISchemaMetaDataResultSet.js",
+      "types": "./dist/db/interfaces/ISchemaMetaDataResultSet.d.ts"
+    },
+    "./IDropDown": {
+      "import": "./dist/generate/interfaces/IDropDown.js",
+      "require": "./dist/generate/interfaces/IDropDown.js",
+      "types": "./dist/generate/interfaces/IDropDown.d.ts"
+    },
+    "./IListResult": {
+      "import": "./dist/generate/interfaces/IListResult.js",
+      "require": "./dist/generate/interfaces/IListResult.js",
+      "types": "./dist/generate/interfaces/IListResult.d.ts"
+    },
+    "./IMetadata": {
+      "import": "./dist/generate/interfaces/IMetadata.js",
+      "require": "./dist/generate/interfaces/IMetadata.js",
+      "types": "./dist/generate/interfaces/IMetadata.d.ts"
+    },
+    "./ColumnMetadata": {
+      "import": "./dist/generate/interfaces/IMetadata.js",
+      "require": "./dist/generate/interfaces/IMetadata.js",
+      "types": "./dist/generate/interfaces/IMetadata.d.ts"
+    }
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "dotenv": "^17.2.1",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "mysql2": "^3.14.3",
+    "node-sql-parser": "^5.3.12",
+    "pg": "^8.16.3",
+    "socket.io": "^4.8.1",
+    "tsx": "^4.20.4",
+    "url": "^0.11.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.20",
+    "@types/node": "^24.3.0",
+    "@types/node-sql-parser": "^1.1.0",
+    "@types/pg": "^8.15.5",
+    "@types/socket.io": "^3.0.2",
+    "eslint": "^9.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-import-resolver-exports": "^1.0.0-beta.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-promise": "^7.2.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "ts-node-dev": "^2.0.0",
+    "tsc": "^2.0.4",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.44.0"
+  }
+}
