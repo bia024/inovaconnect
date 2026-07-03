@@ -13,7 +13,7 @@ O InovaConnect é uma plataforma focada em networking e gestão de eventos de in
 - **Banco de Dados:** MariaDB
 - **Validação:** Zod
 - **Autenticação:** JWT (JSON Web Token)
-- **Containêinerização:** Docker
+- **Contêinerização:** Docker
 
 ### Frontend
 - **Framework:** React com Vite e TypeScript
